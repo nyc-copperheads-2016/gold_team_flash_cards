@@ -1,8 +1,21 @@
+<%if  @current_card.guesses.where(round_id: @round_id).length>0%>
+  <%if @current_card.guesses.where(round_id: @round_id).last.correct==false%>
+    <p>That was wrong please guess again you idiot</p>
+  <%end%>
+<%end%>
+
+<%if Guess.where(round_id:@round_id).length >0%>
+  <%if Guess.where(round_id:@round_id).last.correct==true%>
+    <p>You got that last one correct, goodjob</p>
+  <%end%>
+<%end%>
 
 <p><%=@current_card.question%></p>
 
 <form method="post" action= "/guesses">
   <input type="text" name="guess">
-  <input type="hidden" name="card" value="<%=@current_card%>">
-  <input type="hidden" name="round_id" value="<%=@round_id%>">
+  <input type="hidden" name="card_id" value="<%="#{@current_card.id}"%>">
+  <input type="hidden" name="round_id" value=<%=@round_id%>>
+  <input type="submit" name="Submit">
 </form>
+
