@@ -1,0 +1,39 @@
+<center><h1> Choose a deck </h1></center>
+
+<form method="post" action="/rounds">
+  <%@deck.each do |deck|%>
+    <ul>
+      <li><input name="deck" type="submit" value="<%="#{deck.name}"%>"></li>
+    </ul>
+  <%end%>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <label for="Movie Deck">Post Title:</label>
+    <input name="Deck" type="text">
+    <label for="article_description">Description:</label>
+    <input name="article[description]" type="text">
+    <label for="article_price">Price:</label>
+    <input name="article[price]" type="text">
+
+    <select name="article[category_id]">
+      <option value= 1 >housing</option>
+      <option value= 2>Furniture</option>
+      <option value= 3>Jobs</option>
+    </select>
+    <input type="submit" value="List it!" class="button">
+ -->
