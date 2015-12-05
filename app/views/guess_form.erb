@@ -1,1 +1,8 @@
 
+<p><%=@current_card.question%></p>
+
+<form method="post" action= "/guesses">
+  <input type="text" name="guess">
+  <input type="hidden" name="card" value="<%=@current_card%>">
+  <input type="hidden" name="round_id" value="<%=@round_id%>">
+</form>
