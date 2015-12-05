@@ -16,25 +16,40 @@ post '/rounds' do
 end
 
 get '/rounds/:id' do
-  #This is where the error is!!! in Card.params
-  guesses_from_this_round = Guess.where(round_id: params[:id])
+  #This is where the error is!!! in Card.params, add card id to uesses_from_this_round
   cards_in_this_deck = Deck.find_by(id: Round.find_by(id: params[:id]).deck_id).cards
-
-  if guesses_from_this_round.length > 0
-    already_guessed = []
-    guesses_from_this_round.each {|guess| already_guessed << Card.find_by(id: guess.card_id)}
+  # cards_already_played = Guess.where(round_id: params[:id],)
+  cards_already_played = []
+   cards_in_this_deck.each do |card|
+    if card.guesses.length > 0
+      cards_already_played << card
+    end
   end
 
-  cards_held=cards_in_this_deck
 
-  if already_guessed
-    cards_held.delete_if{|card| already_guessed.include?(card)}
-  end
+
+  cards_in_this_deck.delete_if{|card| cards_already_played.include?(card)}
+
 
   @round_id=params[:id]
   @current_card=cards_held.sample
 
   erb :guess_form
+end
+
+post '/guesses' do
+  current_card=params[:card]
+  if params{:guess]==current_card.answer
+    correct=true
+  else
+    correct=false
+  end
+  current_card.guesses.create(guess: params[:guess],round_id: params[:round_id],correct:correct)
+
+
+  guesses_for_card
+
+
 end
 
 
