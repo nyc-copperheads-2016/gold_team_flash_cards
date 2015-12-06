@@ -28,6 +28,8 @@
             <input type='hidden' name='_method' value='DELETE' />
             <input type='submit' value='Logout' />
           </form>
+          <a href="/users/<%=session[:user_id]%>">Check Out Your Stats</a>
+          <a href="/decks">Play a new round</a>
         <% else %>
           <a href='/users/new'>New User</a>
           <a href="/sessions/new">Login</a>

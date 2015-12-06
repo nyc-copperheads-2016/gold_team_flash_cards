@@ -15,6 +15,6 @@ post '/guesses' do
   else
     @round_id= params[:round_id]
     @current_card=current_card
-    erb :guess_form
+    erb :'/guesses/guess_form'
   end
 end

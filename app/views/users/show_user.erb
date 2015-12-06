@@ -1,0 +1,12 @@
+<section id="profile_header">
+  <h2>Hi <%=@user.username%></h2>
+  <p>Here's your Flash Cards performance history:</p>
+  <p>You've played <%= @user.rounds.length%> rounds so far. </p>
+</section class="deck_display">
+  <%Deck.all.each do |deck|%>
+    <%=deck.name%><%if deck.users.include?(@user)%>
+  <%end%>
+  <%end%>
+
+<section id="profile_body">
+</section>

@@ -1,4 +1,4 @@
 get '/decks' do
   @deck=Deck.all
-  erb :select_deck
+  erb :'/decks/select_deck'
 end

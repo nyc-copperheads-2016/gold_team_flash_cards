@@ -3,7 +3,7 @@ post '/rounds' do
 
 
   user = User.find_by(id: session[:user_id])
-  deck.rounds.create(user_id: user)
+  deck.rounds.create(user_id: user.id)
   @round_id=Round.last.id
 
   redirect "/rounds/#{@round_id}"
@@ -32,11 +32,11 @@ get '/rounds/:id' do
     redirect "rounds/#{@round_id}/game_over"
   end
 
-  erb :guess_form
+  erb :'/guesses/guess_form'
 end
 
 
 get '/rounds/:id/game_over' do
   @round_id=params[:id]
-  erb :game_over
+  erb :'/rounds/game_over'
 end
