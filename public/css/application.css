@@ -1,4 +1,4 @@
-.top-bar {display:inline-block;right:0px;}
+.top-bar {text-align:right;right:0px;}
 
 .check {border:1px solid black;font-family:cursive; width:200px;
         margin-left:5em;}
