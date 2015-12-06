@@ -53,6 +53,7 @@ return false
 
 </head>
 <body>
+
     <div class="top-bar">
         <% if logged_in? %>
           <span class='welcome'>Welcome <%= current_user.username %></span>
@@ -67,6 +68,7 @@ return false
           <a href="/sessions/new">Login</a>
         <% end %>
    </div>
+   <div class="line"></div>
   <%= yield %>
 </body>
 </html>
