@@ -1,5 +1,9 @@
 get '/' do
-  redirect '/decks'
+  redirect '/sessions/new'
+end
+
+get '/sessions/new' do
+  erb :'sessions/new'
 end
 
 get '/decks' do
@@ -11,12 +15,13 @@ post '/rounds' do
   deck= Deck.find_by(name: params[:deck])
 
 
-  # user = User.find_by(id: session[:user_id])
-  deck.rounds.create(user_id: 1)
+  user = User.find_by(id: session[:user_id])
+  deck.rounds.create(user_id: user)
   @round_id=Round.last.id
 
   redirect "/rounds/#{@round_id}"
 end
+
 
 get '/rounds/:id' do
   deck_id=Round.find_by(id:params[:id]).deck_id
@@ -37,7 +42,7 @@ get '/rounds/:id' do
   @round_id=params[:id]
   @current_card=cards_in_this_deck.sample
   if @current_card.nil?
-    redirect '/decks'
+    redirect "/game_over/#{@round_id}"
   end
 
   erb :guess_form
@@ -46,12 +51,12 @@ end
 
 post '/guesses' do
   current_card=Card.find_by(id:params[:card_id])
-  if params[:guess]==current_card.answer
+  if params[:guess].downcase==current_card.answer
     correct=true
   else
     correct=false
   end
-  current_card.guesses.create(guess: params[:guess],round_id: params[:round_id],correct:correct)
+  current_card.guesses.create(guess: params[:guess].downcase,round_id: params[:round_id],correct:correct)
 
 
   guesses_for_card=Guess.where(card_id: current_card.id)
@@ -65,9 +70,14 @@ post '/guesses' do
     @current_card=current_card
     erb :guess_form
   end
-
-
 end
+
+
+get '/game_over/:id' do
+  @round_id=params[:id]
+  erb :game_over
+end
+
 
 
 
