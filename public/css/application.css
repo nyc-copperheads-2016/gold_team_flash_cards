@@ -13,9 +13,9 @@ body {
   background-image:url('../blur-big-mario.png');
    }
 
-a:link {color:red;}
-a:visited{color:yellow;}
-a:hover{color:green;}
+a:link {color:blue;}
+a:visited{color:purple;}
+a:hover{color:yellow;}
 
 .join{margin-left: 16em;margin-top:2em;}
 
@@ -39,4 +39,4 @@ a:hover{color:green;}
 
 .qline {width:30%;border-bottom: 2px solid purple; margin-left:20em; }
 .q-answer{margin-left:21.5em;margin-top:0.5em;}
-.container-q{background-color:#a0a0a0;}
+.container-q{background-color:#989898;}
