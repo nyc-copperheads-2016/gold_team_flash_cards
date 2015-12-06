@@ -14,4 +14,11 @@
 document.forms.agreeform.agreecheck.checked=false
 </script>
 
-<p align="center"><font face="Arial" size="-2">
+<% if defined?(errors)%>
+  <ul>
+    <% errors.each do |error| %>
+      <li><%=error%></li>
+    <%end%>
+  </ul>
+<%end%>
+

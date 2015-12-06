@@ -3,12 +3,21 @@
   <h2>Hi <%=@user.username%></h2>
   <p>Here's your Flash Cards performance history:</p>
   <p>You've played <%= @user.rounds.length%> rounds so far. </p>
-</section class="deck_display">
-  <%Deck.all.each do |deck|%>
-    <%=deck.name%><%if deck.users.include?(@user)%>
-  <%end%>
-  <%end%>
+</section>
 
 <section id="profile_body">
+  <%Deck.all.each do |deck|%>
+    <%if deck.users.include?(@user)%>
+      <section class="user_deck_history">
+        <h3><%= deck.name %></h3>
+        <%@user.rounds.select{|round| round.deck_id == deck.id}.each do |round|%>
+        <section class ="one_round">
+          <p>You played this deck on <%=round.round_date%></p>
+          <p>In this round, you got <%=round.questions_correct%> questions right and <%=round.questions_incorrect%> incorrect.</p>
+        </section>
+        <%end%>
+      </section>
+    <%end%>
+  <%end%>
 </section>
 </div>
