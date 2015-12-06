@@ -19,8 +19,41 @@
   <script src="/js/application.js"></script>
 
   <title>Flash Card</title>
+
+ <!--this is where you accept the terms of service-->
+<script>
+
+//"Accept terms" form submission
+
+var checkobj
+
+function agreesubmit(el){
+checkobj=el
+if (document.all||document.getElementById){
+for (i=0;i<checkobj.form.length;i++){  //hunt down submit button
+var tempobj=checkobj.form.elements[i]
+if(tempobj.type.toLowerCase()=="submit")
+tempobj.disabled=!checkobj.checked
+}
+}
+}
+
+function defaultagree(el){
+if (!document.all&&!document.getElementById){
+if (window.checkobj&&checkobj.checked)
+return true
+else{
+alert("Please read/accept terms to submit form")
+return false
+}
+}
+}
+
+</script>
+
 </head>
 <body>
+
     <div class="top-bar">
         <% if logged_in? %>
           <span class='welcome'>Welcome <%= current_user.username %></span>
@@ -35,6 +68,7 @@
           <a href="/sessions/new">Login</a>
         <% end %>
    </div>
+   <div class="line"></div>
   <%= yield %>
 </body>
 </html>

@@ -1,6 +1,17 @@
-<h2>Join The Flashcards Community</h2>
-<form action="/users" method="post">
-  <input type='text' name='username' placeholder="Username"/>
-  <input type='password' name='password' placeholder="Password"/>
-  <input type='submit' />
+<h1>Join The Flashcards Community</h1>
+<form action="/users" name="agreeform" method="post" onSubmit="return defaultagree(this)" >
+<div class ='check'>By checking the agree button, you agree to prepare yourself for the most awsome game of flash cards ever!</div><br>
+<div class='join'>
+<input type='text' name='username' placeholder="Username"/>
+<input type='password' name='password' placeholder="Password"/>
+<input name="agreecheck" type="checkbox" onClick="agreesubmit(this)"><b>I agree to the above terms</b><br>
+<input type="Submit" value="Submit!" disabled>
+</div>
 </form>
+
+<script>
+//change two names below to your form's names
+document.forms.agreeform.agreecheck.checked=false
+</script>
+
+<p align="center"><font face="Arial" size="-2">

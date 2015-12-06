@@ -12,12 +12,22 @@
   <%end%>
 <%end%>
 
-<p><%=@current_card.question%></p>
+
+<div class="container-q">
+<div id="wrapper">
+ <h1><%=@current_card.question%></h1>
+</div>
+
+<div class='qline'></div>
+
 
 <form method="post" action= "/guesses">
-  <input type="text" name="guess">
+  <div class='q-answer'>
+  <input type="text" name="guess" placeholder="Answer">
   <input type="hidden" name="card_id" value="<%="#{@current_card.id}"%>">
   <input type="hidden" name="round_id" value=<%=@round_id%>>
   <input type="submit" name="Submit">
+</div>
 </form>
+</div>
 
