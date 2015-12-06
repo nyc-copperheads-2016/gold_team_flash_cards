@@ -1,0 +1,13 @@
+<h1> Here are your stats for the round</h1>
+<%right=Guess.where(round_id:@round_id).pluck(:correct).count(true)%>
+
+<%wrong=Guess.where(round_id:@round_id).pluck(:correct).count(false)%>
+<p> Questions answered correctly: <%=right%></p>
+<p>Number of wrong guesses: <%=wrong%></p>
+
+
+<p>Thanks for playing!</p>
+
+<a href= '/decks'>Click here to play again</a>
+
+
