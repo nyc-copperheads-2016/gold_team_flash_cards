@@ -7,13 +7,10 @@ post '/guesses' do
   end
   current_card.guesses.create(guess: params[:guess].downcase,round_id: params[:round_id],correct:correct)
 
-
-  guesses_for_card=Guess.where(card_id: current_card.id)
-
   if current_card.repeat_guess?(params[:round_id])
     redirect "rounds/#{params[:round_id]}"
   else
-    @round_id= params[:round_id]
+    @round= Round.find_by(id:params[:round_id])
     @current_card=current_card
     erb :'/guesses/guess_form'
   end

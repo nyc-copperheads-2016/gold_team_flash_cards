@@ -7,7 +7,7 @@ post '/users' do
   if new_user.save
     redirect '/'
   else
-    redirect '/errors=couldnt_make_a_user'
+    erb :'/users/new_user', locals: { errors: new_user.errors.full_messages }
   end
 end
 
