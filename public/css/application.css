@@ -3,7 +3,7 @@
 .check {border:1px dotted black;font-family:cursive; width:200px;
         margin-left:22em;background-color:gray;margin-top: 3em}
 
-.line {border-bottom:dotted grey;}
+.line {border-bottom:dotted gray;}
 
 h1 {text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px black, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;;
     text-align:center;color: black;padding:10px;
@@ -40,3 +40,4 @@ a:hover{color:yellow;}
 .qline {width:30%;border-bottom: 2px solid purple; margin-left:20em; }
 .q-answer{margin-left:21.5em;margin-top:0.5em;}
 .container-q{background-color:#989898;}
+.container-stat{background-color:#989898; text-align:center;}

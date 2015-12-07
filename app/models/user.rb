@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :decks, through: :rounds
   attr_accessor :password
 
-  validates :password, length: { minimum: 6 }
+  # validates :password, length: { minimum: 6 }
   validates :username, uniqueness: true
   validates :username, presence: true
 

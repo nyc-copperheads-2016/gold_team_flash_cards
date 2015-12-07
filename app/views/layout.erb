@@ -69,6 +69,13 @@ return false
         <% end %>
    </div>
    <div class="line"></div>
+   <% if defined?(errors)%>
+     <ul>
+      <% errors.each do |error| %>
+        <li><%=error%></li>
+      <%end%>
+     </ul>
+  <%end%>
   <%= yield %>
 </body>
 </html>

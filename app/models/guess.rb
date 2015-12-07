@@ -2,6 +2,8 @@ class Guess < ActiveRecord::Base
   belongs_to :card
   belongs_to :round
 
+  validates :guess, presence: true
+
   def self.round_has_guesses?(round_id)
     self.where(round_id:round_id).length >0
   end
