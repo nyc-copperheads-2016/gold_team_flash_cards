@@ -1,7 +1,8 @@
-Deck.create([{name: 'Famous People'},{name:'Movies'},{name:'Super Mario'}])
+decks = Deck.create([{name: 'Famous People'},{name:'Movies'},{name:'Super Mario'}])
 
-Card.create(question: "Who starred in Jerry McGuire?", answer: "tom cruise", deck_id: 2)
-Card.create(question: "Who is Luke's father in StarWars?", answer: "darth vader", deck_id: 2)
+Card.create(question: "Who starred in Jerry McGuire?", answer: "tom cruise", deck: deck)
+# Build off of your associated objects.  There is no guarantee that your ids are starting from 1 or that they are incrementing by 1.
+deck[0].cards.create(question: "Who is Luke's father in StarWars?", answer: "darth vader")
 Card.create(question: "Who owns Microsoft?", answer: "bill gates", deck_id: 1)
 Card.create(question: "Which famous laker is known as the Black Mamba?", answer: "kobe bryant", deck_id: 1)
 

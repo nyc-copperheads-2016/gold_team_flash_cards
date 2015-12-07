@@ -1,11 +1,11 @@
 post '/guesses' do
-  current_card=Card.find_by(id:params[:card_id])
-  if params[:guess].downcase==current_card.answer
-    correct=true
-  else
-    correct=false
-  end
-  current_card.guesses.create(guess: params[:guess].downcase,round_id: params[:round_id],correct:correct)
+  current_card = Card.find_by(id:params[:card_id])
+  # I think that this logic would be better encapsulated in the Card model...
+  current_card.guesses.create(
+    guess:    params[:guess].downcase,
+    round_id: params[:round_id],
+    correct:  current_card.is_correct?(params[:guess])
+  )
 
   if current_card.repeat_guess?(params[:round_id])
     redirect "rounds/#{params[:round_id]}"

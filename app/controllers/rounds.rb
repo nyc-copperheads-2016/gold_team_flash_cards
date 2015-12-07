@@ -1,18 +1,18 @@
 post '/rounds' do
   deck= Deck.find_by(name: params[:deck])
-  user = User.find_by(id: session[:user_id])
-  deck.rounds.create(user_id: user.id)
-  @round=Round.last
+  # You have the current_user helper already: use it.
+  # user = User.find_by(id: session[:user_id])
+  @round = deck.rounds.create(user: current_user)
+  # You can never assume that the object you just made is the last one that was made
+  # Always assign to a variable and use that variable
+  # @round = Round.last
   redirect "/rounds/#{@round.id}"
 end
 
 
 get '/rounds/:id' do
-  @round=Round.find_by(id:params[:id])
-  cards_in_this_deck = @round.cards_in_this_round_deck
-  cards_already_played = @round.cards_played_in_this_round
-  cards_in_this_deck-=cards_already_played
-  @current_card=cards_in_this_deck.sample
+  @round = Round.find_by(id:params[:id])
+  @current_card = @round.next_card
 
   if @current_card.nil?
     redirect "rounds/#{@round.id}/game_over"

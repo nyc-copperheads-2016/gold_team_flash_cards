@@ -1,10 +1,9 @@
-<%if  @current_card.current_card_has_guesses_from_this_round?(@round.id) && @current_card.last_guess_wrong?(@round.id)%>
+<% if @current_card.current_card_has_guesses_from_this_round?(@round.id) && @current_card.last_guess_wrong?(@round.id)%>
     <p>That was wrong please guess again you idiot</p>
 <%end%>
 
 
-
-<%if Guess.round_has_guesses?(@round.id) && Guess.last_guess_was_correct?(@round.id)%>
+<%if @round.last_guess_correct? %>
     <p>You got that last one correct, goodjob</p>
 <%end%>
 
@@ -17,11 +16,17 @@
 <div class='qline'></div>
 
 
+<!-- If you wanted to use nested routes for this, it might look like:
+
+<form method="post" action= "/rounds/<%= round.id %>/cards/<%= card.id %>/guesses">
+
+-->
+
 <form method="post" action= "/guesses">
   <div class='q-answer'>
   <input type="text" name="guess" placeholder="Answer">
-  <input type="hidden" name="card_id" value="<%="#{@current_card.id}"%>">
-  <input type="hidden" name="round_id" value=<%=@round.id%>>
+  <input type="hidden" name="card_id" value="<%= "#{@current_card.id}" %>">
+  <input type="hidden" name="round_id" value=<%= @round.id %>>
   <input type="submit" name="Submit">
 </div>
 </form>

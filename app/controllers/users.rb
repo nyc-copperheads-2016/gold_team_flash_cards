@@ -3,7 +3,9 @@ get '/users/new' do
 end
 
 post '/users' do
-  new_user = User.new(username: params[:username], password: params[:password])
+  # If your param keys match your obj attr's, you can pass params directly:
+  #new_user = User.new(username: params[:username], password: params[:password])
+  new_user = User.new(params)
   if new_user.save
     redirect '/'
   else

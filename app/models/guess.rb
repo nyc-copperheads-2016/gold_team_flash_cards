@@ -5,7 +5,7 @@ class Guess < ActiveRecord::Base
   validates :guess, presence: true
 
   def self.round_has_guesses?(round_id)
-    self.where(round_id:round_id).length >0
+    where(round_id:round_id).length >0
   end
 
   def self.last_guess_was_correct?(round_id)

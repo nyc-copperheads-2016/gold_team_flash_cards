@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :decks, through: :rounds
   attr_accessor :password
 
+  # Do password validations against a password_confirmation field
   # validates :password, length: { minimum: 6 }
   validates :username, uniqueness: true
   validates :username, presence: true

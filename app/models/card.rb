@@ -13,4 +13,8 @@ class Card < ActiveRecord::Base
   def current_card_has_guesses_from_this_round?(round_id)
     self.guesses.where(round_id: round_id).length > 0
   end
+
+  def is_correct? guess
+    guess.downcase == answer.downcase
+  end
 end

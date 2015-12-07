@@ -3,8 +3,10 @@ class CreateGuesses < ActiveRecord::Migration
     create_table :guesses do |t|
       t.string :guess, null: false
       t.boolean :correct, null: false
-      t.references :card
-      t.references :round
+      ## You can pass constraints even on references...
+      ## You should if the object cannot exist without those refs
+      t.references :card, null: false
+      t.references :round, null: false
 
       t.timestamps null: false
     end
