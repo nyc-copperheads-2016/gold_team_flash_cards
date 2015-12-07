@@ -14,6 +14,5 @@ post '/sessions' do
     redirect '/decks'
   else
     redirect '/?errors=incorrect_user_or_password'
-    ## Incorrect username or password
   end
 end
